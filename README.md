@@ -4,7 +4,16 @@
 
 This is used to view nearby bluetooth devices.
 
-To run:
+Prerequisites:
+ - Python
+ - Bleak
+
+To install Bleak:
+```
+pip install bleak
+```
+
+To run script:
 ```
 python discover.py
 ```
