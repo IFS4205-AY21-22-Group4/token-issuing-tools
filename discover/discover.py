@@ -29,6 +29,6 @@ def scan():
 
 if __name__ == "__main__":
     print("address           | name")
-    print("===================================")
+    print("==================|================")
     tokens = scan()
     

@@ -1,6 +1,6 @@
 # Tools for token issuing
 
-### [discover.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/discover.py)
+### [discover.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/discover/discover.py)
 
 This is used to view nearby bluetooth devices.
 
@@ -14,7 +14,7 @@ This is used to view nearby bluetooth devices.
 ```
 pip install --upgrade adafruit-blinka-bleio adafruit-circuitpython-ble
 ```
-Placing [gmsservice.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/gmsservice.py) in the python ble service directory:
+Placing [gmsservice.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/discover/gmsservice.py) in the python ble service directory
 
 > On Windows:
 >
@@ -33,3 +33,7 @@ Placing [gmsservice.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-
 ```
 python discover.py
 ```
+
+### [token.ino](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/token.ino)
+
+This is uploaded to the BLE dongle via Arduino IDE
