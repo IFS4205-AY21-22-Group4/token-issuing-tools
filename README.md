@@ -1,31 +1,31 @@
 # Tools for token issuing
 
-### discover.py
+### [discover.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/discover.py)
 
 This is used to view nearby bluetooth devices.
 
-Prerequisites:
+#### Prerequisites:
  - Python
- - Bleak
+ - adafruit-blinka-bleio
+ - adafruit-circuitpython-ble
+ - gmsservice.py in python ble service area
 
-To install Bleak:
+#### To install packages:
 ```
-pip install bleak
+pip install --upgrade adafruit-blinka-bleio adafruit-circuitpython-ble
 ```
+#### Placing [gmsservice.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/gmsservice.py) in the python ble service directory
 
-To run script:
+On Windows:
+Place `gmsservice.py` in directory `C:\...........\Python38\site-packages\adafruit_ble\services`
+
+On macOS:
+Place `gmsservice.py` in directory `/opt/homebrew/lib/python3.8/site-packages/adafruit_ble/services/`
+
+On Linux:
+Place `gmsservice.py` in directory `~/.local/lib/python3.8/site-packages/adafruit_ble/services`
+
+#### To run script:
 ```
 python discover.py
 ```
-
-1. Enter 1 to view all devices and 2 to view devices with "IFS4205" in the name
-    ```
-    (1) Display all nearby devices
-    (2) Display only IFS4205 devices
-    ```
-1. Copy address required after identifying the device
-    ```
-    (copy)            address              name
-    ========================================================
-    (E9FCCD620A49)    E9:FC:CD:62:0A:49    IFS4205-E9FCCD
-    ```

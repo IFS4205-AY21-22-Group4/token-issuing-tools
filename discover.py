@@ -1,30 +1,34 @@
-import asyncio
-from bleak import discover
+from adafruit_ble import BLERadio
+from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
+from adafruit_ble.services.gmsservice import GMS
+import platform
 
-def extractAddress(mac):
-    address = mac.replace(':', '')
-    return address
+def connect_token(entry, radio):
+    if GMS in entry.services:
+        GMS_connection = radio.connect(entry)
+        if GMS_connection and GMS_connection.connected:
+            response = GMS_connection[GMS].readline().decode("utf-8")
+    GMS_connection.disconnect()
+    return response
 
-def printDetails(device):
-    if option == 1:
-        print("({})    {}    {}".format(extractAddress(device.address), device.address, device.name))
-    if option == 2:
-        if "IFS4205" in device.name:
-            print("({})    {}    {}".format(extractAddress(device.address), device.address, device.name))
+def scan():
+    radio = BLERadio()
+    found = set()
+    for entry in radio.start_scan(ProvideServicesAdvertisement, timeout=10, minimum_rssi=-80):
+        addr = entry.address.string
+        name = entry.complete_name
+        if addr not in found and name != None and "IFS4205" in name:
+            if platform.system() == 'Darwin':
+                addr = connect_token(entry, radio)
+                found.add(addr)
+            else:
+                found.add(addr)
+            print("{} | {}".format(addr.lower(), name))
+            
+    return found
 
-async def run():
-    devices = await discover()
-    print("(copy)            address              name")
-    print("========================================================")
-    for d in devices:
-        printDetails(d)
-
-option = 0
-while (option != 1 and option != 2):
-    print("(1) Display all nearby devices")
-    print("(2) Display only IFS4205 devices")
-    option = int(input())
-    print()
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run())
+if __name__ == "__main__":
+    print("address           | name")
+    print("===================================")
+    tokens = scan()
+    
