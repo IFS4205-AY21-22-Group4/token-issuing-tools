@@ -34,6 +34,6 @@ Placing [gmsservice.py](https://github.com/IFS4205-AY21-22-Group4/token-issuing-
 python discover.py
 ```
 
-### [token.ino](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/token.ino)
+### [token.ino](https://github.com/IFS4205-AY21-22-Group4/token-issuing-tools/blob/master/token/token.ino)
 
 This is uploaded to the BLE dongle via Arduino IDE
