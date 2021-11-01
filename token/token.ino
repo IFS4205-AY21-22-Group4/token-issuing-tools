@@ -1,8 +1,7 @@
 #include <RFduinoBLE.h>
-#include <time.h>
 
-const char* device_name = "IFS4205-E9FCCD620A49";
-const char* device_address = "e9:fc:cd:62:0a:49";
+const char* device_name = "IFS4205";
+const char* device_address = "<REPLACE WITH DEVICE MAC ADDRESS IN FORMAT xx:xx:xx:xx:xx:xx>";
 
 void setup() {
   RFduinoBLE.deviceName = device_name;
@@ -10,7 +9,6 @@ void setup() {
 }
 
 void RFduinoBLE_onConnect() {
-   Serial.println("Start connection..."); 
 }
 
 void loop() {
